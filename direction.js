@@ -40,34 +40,43 @@ function Student(name, isDyslexic) {
     this.direction = 0;
 
     this.turn = function(cmd) {
+        // if isDyslexic and turn is L | R, then do opposite
         if (this.isDyslexic && Math.abs(cmdDefs[cmd]) == 90) {
             this.direction = this.direction + (0 - (cmdDefs[cmd]));
-        } else {  
+        } else {  // not dyslexic or a A. In either case just add values
             this.direction = this.direction + cmdDefs[cmd];
         }
 
+        // if we have gone clockwise past 360 (ie GT 360), then subtract 360 to get to right direction
         if (this.direction >= 360) {
             this.direction = this.direction - 360;
         }
 
+        // if we have gone counterclockwise past 0 (ie negative number), then just att 360 go get to right direction
         if (this.direction < 0) {
             this.direction = 360 + this.direction;
         }
     }
 }
 
-var students = [];
+// main()
 
-students.push (new Student("alice", true));
-students.push (new Student("bob", false));
-students.push (new Student("chris", false));
-
+// possible commands and their associated degree of rotation
 cmdDefs = {
     "L" : -90, 
     "R" : +90 , 
     "A" : +180
 }
 
+//studnts start out as empty array
+var students = [];
+
+// push alice, bob, and chris onto stack.. alice is dyslexic
+students.push (new Student("alice", true));
+students.push (new Student("bob", false));
+students.push (new Student("chris", false));
+
+// apply test cases from codewars
 console.log(lineUp("LLARL"));   //pass
 console.log(lineUp("RLR"));     //pass
 console.log(lineUp(""));        //pass

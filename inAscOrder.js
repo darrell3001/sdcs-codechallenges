@@ -5,6 +5,7 @@ function inAscOrder(arr) {
     var clone = arr.slice();
     
     clone.sort(function(a, b) {
+        console.log(a + ":" + b + " - return=" + (a-b)); 
         return a - b;
     });
     console.log("sorted   = " + clone);
