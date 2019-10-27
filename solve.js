@@ -7,7 +7,7 @@ function solve(st, a, b) {
 
   var first = st.slice(0, a < st.length ? a : st.length);
   var last = st.slice(b < st.length ? b : st.length);
-  var middle = st.slice(a, b);
+  var middle = st.slice(a, b + 1);
 
   // console.log(`str = ${st}, a = ${a}, b = ${b}`);
   // console.log(`st.length = ${st.length}`);
